@@ -1,14 +1,18 @@
-import express, { Application, Request, Response, NextFunction } from "express";
+// Imports:
+import express, { Application, Request, Response, NextFunction } from 'express'
 
-const app: Application = express();
+// Global Vars:
+const PORT: number = 5001
 
-const add = (a: number, b: number): number => a + b;
+// Initialize:
+const app: Application = express()
 
-app.get("/", (req: Request, res: Response) => {
-  console.log(add(1, 4));
-  res.send("hello");
-});
+// Base Router:
+app.get('/', (req: Request, res: Response) => {
+  res.send('CrudTS Home Page')
+})
 
-app.listen(5000, () => {
-  console.log("[!] server starting!");
-});
+// Establishing connection:
+app.listen(PORT, () => {
+  console.log(`[!]  Server is listening on port ${PORT}`)
+})
