@@ -1,18 +1,23 @@
 // Imports:
-import express, { Application, Request, Response, NextFunction } from 'express'
+import express, { Application, Request, Response, NextFunction } from 'express';
+import files from './components/Files/files.router';
 
-// Global Vars:
-const PORT: number = 5001
+// Controllers (Route handlers) placed here
+// API keys and Passport configuration placed here
 
-// Initialize:
-const app: Application = express()
+// Initiate Express server:
+const app = express();
 
-// Base Router:
+// DB connector will be placed here
+
+// Express Configurations
+app.set('port', process.env.PORT || 5000);
+
+// Primary app routes
 app.get('/', (req: Request, res: Response) => {
-  res.send('CrudTS Home Page')
-})
+  res.send('CrudTS Home Page');
+});
 
-// Establishing connection:
-app.listen(PORT, () => {
-  console.log(`[!]  Server is listening on port ${PORT}`)
-})
+app.use(files);
+
+export default app;

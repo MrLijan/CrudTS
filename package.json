@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node public/app.js",
-    "dev" : "nodemon src/app.ts",
-    "build" : "tsc -p ."
+    "start": "node public/app.js",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc -p ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/errorhandler": "^1.5.0",
+    "errorhandler": "^1.5.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
