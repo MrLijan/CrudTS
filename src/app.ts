@@ -1,6 +1,6 @@
 // Imports:
 import express, { Application, Request, Response, NextFunction } from 'express';
-import files from './components/Files/files.router';
+import filesRouter from './components/Files/files.router';
 
 // Controllers (Route handlers) placed here
 // API keys and Passport configuration placed here
@@ -18,6 +18,6 @@ app.get('/', (req: Request, res: Response) => {
   res.send('CrudTS Home Page');
 });
 
-app.use(files);
+app.use('/files', filesRouter);
 
 export default app;

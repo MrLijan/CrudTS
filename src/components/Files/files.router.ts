@@ -1,9 +1,14 @@
 import { Router, Request, Response } from 'express';
+import File from './files.class';
 
-const file = Router();
+//Init Router
+const router = Router();
 
-file.get('/read', (req: Request, res: Response) => {
-  res.send('/read');
+const basePath: string = '/home/mrlijan/Dev/crudts/dist/userland/';
+
+router.get('/read/home', (req: Request, res: Response) => {
+  const file = new File(basePath);
+  res.send(file.readStructure(basePath));
 });
 
-export default file;
+export = router;
