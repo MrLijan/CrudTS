@@ -6,7 +6,7 @@ import filesRouter from './components/Files/files.router';
 // API keys and Passport configuration placed here
 
 // Initiate Express server:
-const app = express();
+const app: Application = express();
 
 // DB connector will be placed here
 
