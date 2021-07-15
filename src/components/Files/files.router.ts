@@ -24,10 +24,17 @@ router.get('/read', async (req: Request, res: Response) => {
 });
 
 // Creating a File ->
-router.get('/create', async (req: Request<Queries>, res: Response) => {
+router.get('/create', async (req: Request, res: Response) => {
   const path: any = req.query.p;
   const document = await file.createFile(path);
   res.send(document);
+});
+
+// Delete a file ->
+router.get('/delete', async (req: Request, res: Response) => {
+  const path: any = req.query.p;
+  const deleted = await file.deleteFile(path);
+  res.send(deleted);
 });
 
 export = router;

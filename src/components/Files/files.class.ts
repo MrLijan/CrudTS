@@ -30,11 +30,21 @@ class File {
   async createFile(p: string): Promise<string> {
     const check = await this.isExist(p);
     if (check !== false) {
-      return 'File already exist';
+      return 'File already exists';
     }
 
     fsp.writeFile(p, 'new file', 'utf-8');
-    return `${p} successfully created`;
+    return `${p} created successfully`;
+  }
+
+  async deleteFile(p: string): Promise<string> {
+    const check = await this.isExist(p);
+    if (check !== true) {
+      return 'File does not exists';
+    }
+
+    fse.remove(p);
+    return `${p} deleted successfully`;
   }
 }
 
