@@ -19,4 +19,10 @@ const server = app.listen(app.get('port'), () => {
   console.log('[?]  Press CTRL-C to stop \n');
 });
 
+process.on('SIGINT', () => {
+  console.log('\n[!]  Process killed by the user');
+  server.close();
+  process.exit();
+});
+
 export default server;
