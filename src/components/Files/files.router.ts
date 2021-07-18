@@ -1,15 +1,19 @@
 import { Router, Request, Response } from 'express';
 import File from './files.class';
+import path from 'path';
 
 //Init Router
 const router = Router();
 
-const basePath: string = '/home/mrlijan/Dev/crudts/dist/userland/';
+// const base: string = '/home/mrlijan/Dev/crudts/dist/userland/';
+
+const basePath: string = path.join(__dirname, '../../../dist/userland');
+console.log(basePath);
 const file = new File(basePath);
 
 // Fetching the full dir of userland ->
 router.get('/read/home', async (req: Request, res: Response) => {
-  res.send(file.readStructure(basePath));
+  res.send(file.readStructure(basePath, { attributes: ['mtime'] }));
 });
 
 // Fetching a specific file ->
