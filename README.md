@@ -1,16 +1,16 @@
 # Crudder-ts / Files
 
----
 
 The main responsibility of Crudder is to being an agent inside the userland's container. This means that it's responsible for file handling and more...
 
-**Code snippets can be found at the end of each method.**
+| [!] Code snippets can be found at the end of each method. |
+|--|
 
----
+<br>
 
 ## Base Routes
-
 The base routes will provide the ability to negotiate with the file methods.
+<br>
 
 ### Routes
 
@@ -28,9 +28,13 @@ The base routes will provide the ability to negotiate with the file methods.
 5. `/delete` - This route will delete a specific file by receiving its full path.
     - **{query} p** - represents the full path → Required.
 
+<br>
+
 ## The File class
 
 The File class will serve *Crudder-ts* as a File handler. All the functions will be placed there.
+
+<br>
 
 ### Imports
 
@@ -43,6 +47,8 @@ The File class will serve *Crudder-ts* as a File handler. All the functions will
 3. `fs` - the plugin that is responsible for the file system's manipulations.
     - Documentation: [*https://nodejs.org/api/fs.html*](https://nodejs.org/api/fs.html)
 
+<br>
+
 ### Properties
 
 ---
@@ -50,6 +56,8 @@ The File class will serve *Crudder-ts* as a File handler. All the functions will
 1. `path` - 
     - String
     - Optional
+
+<br>
 
 ### Methods
 
