@@ -1,0 +1,4 @@
+# The purpose of this file is to keep the directory "userland" in git structure
+# but not let any custom files created by user be pushed to git.
+*
+!.gitignore
