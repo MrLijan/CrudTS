@@ -30,7 +30,18 @@ router.get('/read', async (req: Request, res: Response) => {
 // Creating a File ->
 router.get('/create', async (req: Request, res: Response) => {
   const path: any = req.query.p;
-  const document = await file.createFile(path);
+  const data: any = req.body.p;
+  const document = await file.createFile(path, data);
+  res.send(document);
+});
+
+// Update a File ->
+router.get('/save', async (req: Request, res: Response) => {
+  const path: any = req.query.p;
+  const data: any = req.body.data;
+
+  const document = await file.updateFile(path, data);
+
   res.send(document);
 });
 
