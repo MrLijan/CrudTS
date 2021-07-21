@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import File from './files.class';
 import path from 'path';
+import { encode, decode } from '../helpers/dencode';
 
 //Init Router
 const router = Router();
@@ -20,7 +21,7 @@ router.get('/read/home', async (req: Request, res: Response) => {
 router.get('/read', async (req: Request, res: Response) => {
   const params: any = req.query.p;
   try {
-    const document = await file.readFile(params);
+    const document = await file.readFile(decode(params));
     res.send(document);
   } catch (err) {
     res.send(err);
