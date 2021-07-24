@@ -37,12 +37,12 @@ router.get('/create', async (req: Request, res: Response) => {
 });
 
 // Update a File ->
-router.get('/save', async (req: Request, res: Response) => {
-  const path: any = req.query.p;
+router.post('/save', async (req: Request, res: Response) => {
+  const path: any = req.body.p;
   const data: any = req.body.data;
 
-  const document = await file.updateFile(path, data);
-
+  const document = await file.updateFile(decode(path), decode(data));
+  res.status(201);
   res.send(document);
 });
 

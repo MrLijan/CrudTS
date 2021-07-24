@@ -1,13 +1,21 @@
 import errorHandler from 'errorhandler';
 import app from './app';
+import cors from 'cors';
 
 /*
 --> Error Handler - Provides full stack (?)
 */
 
 if (process.env.NODE_ENV === 'development') {
+  // Error Handler:
   app.use(errorHandler());
 }
+
+const options = {
+  origin: 'http://',
+};
+
+app.use(cors(options));
 
 /*
 --> Start Express server
