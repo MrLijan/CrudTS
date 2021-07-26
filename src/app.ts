@@ -1,5 +1,6 @@
 // Imports:
 import express, { Application, Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 import filesRouter from './components/Files/files.router';
 import bodyParser from 'body-parser';
 
@@ -15,6 +16,21 @@ const app: Application = express();
 app.set('port', process.env.PORT || 5000);
 
 app.use(express.json());
+
+const options: cors.CorsOptions = {
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'X-Access-Token',
+  ],
+  credentials: true,
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  origin: '*',
+  preflightContinue: false,
+};
+app.use(cors(options));
 
 // Primary app routes
 app.get('/', (req: Request, res: Response) => {
