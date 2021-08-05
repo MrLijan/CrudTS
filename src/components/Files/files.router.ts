@@ -31,7 +31,7 @@ router.get('/read', async (req: Request, res: Response) => {
 // Creating a File ->
 router.post('/create', async (req: Request, res: Response) => {
   const path: any = req.body.p;
-  const data: any = req.body.p;
+  const data: any = req.body.data;
 
   const document = await file.createFile(decode(path), decode(data));
 
