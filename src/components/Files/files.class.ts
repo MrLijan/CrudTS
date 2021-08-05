@@ -1,6 +1,7 @@
 import dirTree from 'directory-tree';
 import fse from 'fs-extra';
 import fs from 'fs';
+import { Notice } from '../Notices/notice.interface';
 
 const fsp = fs.promises;
 
@@ -40,19 +41,21 @@ class File {
   }
 
   // Creating a file =>
-  async createFile(p: string, data: string): Promise<string> {
+  async createFile(p: string, data: string): Promise<Notice> {
     const check = await this.isExist(p);
+
     if (check !== false) {
-      return 'File already exists';
+      return { status: 'error', reason: 'File already exists' };
     }
 
-    fsp.writeFile(p, data, 'utf-8');
-    return `${p} created successfully`;
+    await fsp.writeFile(p, data, 'utf-8');
+    return { status: 'success' };
   }
 
   // Update an existing file =>
   async updateFile(p: string, data: string): Promise<string> {
     const check = await this.isExist(p);
+    console.log(check);
 
     if (check !== true) {
       return 'File does not exists';

@@ -29,11 +29,18 @@ router.get('/read', async (req: Request, res: Response) => {
 });
 
 // Creating a File ->
-router.get('/create', async (req: Request, res: Response) => {
-  const path: any = req.query.p;
+router.post('/create', async (req: Request, res: Response) => {
+  const path: any = req.body.p;
   const data: any = req.body.p;
-  const document = await file.createFile(path, data);
-  res.send(document);
+
+  const document = await file.createFile(decode(path), decode(data));
+
+  // -> If error, send 405
+  if (document.status === 'error') {
+    res.status(405).send(document);
+  } else {
+    res.sendStatus(200);
+  }
 });
 
 // Update a File ->
