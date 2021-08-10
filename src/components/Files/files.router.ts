@@ -49,14 +49,14 @@ router.post('/save', async (req: Request, res: Response) => {
   const data: any = req.body.data;
 
   const document = await file.updateFile(decode(path), decode(data));
-  res.status(201);
   res.send(document);
 });
 
 // Delete a file ->
 router.get('/delete', async (req: Request, res: Response) => {
   const path: any = req.query.p;
-  const deleted = await file.deleteFile(path);
+
+  const deleted = await file.deleteFile(decode(path));
   res.send(deleted);
 });
 
